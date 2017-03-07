@@ -740,6 +740,7 @@ module T
         array << ['Favorites', number_with_delimiter(status.favorite_count)]
         array << ['Source', strip_tags(status.source)]
         array << ['Location', location] unless location.nil?
+        array << ['Media URL', status.media[0].video_info.variants[0].url.to_s] if status.media? && !status.media[0].video_info.nil? && !status.media[0].video_info.variants.empty?
         print_table(array)
       end
     end
